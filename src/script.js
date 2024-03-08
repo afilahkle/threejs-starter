@@ -31,7 +31,7 @@ const fragmentShader = `
 
 const uniforms = {
   u_time: { value: 1.0 },
-  u_mouse: { value: new THREE.Vector2() },
+  u_mouse: { value: new THREE.Vector2(mouse.x, mouse.y) },
   u_resolution: {
     value: new THREE.Vector2(sizes.width, sizes.height),
   },
