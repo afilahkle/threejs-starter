@@ -19,20 +19,20 @@ const vertexShader = `
 `;
 
 const fragmentShader = `
-  uniform vec2 u_resolution;
-  uniform vec2 u_mouse;
-  uniform float u_time;
+  uniform vec2 uResolution;
+  uniform vec2 uMouse;
+  uniform float uTime;
 
   void main() {
-      vec2 st = gl_FragCoord.xy/u_resolution.xy;
+      vec2 st = gl_FragCoord.xy/uResolution.xy;
       gl_FragColor=vec4(st.x, st.y,0.0,1.0);
   }
 `;
 
 const uniforms = {
-  u_time: { value: 1.0 },
-  u_mouse: { value: new THREE.Vector2(mouse.x, mouse.y) },
-  u_resolution: {
+  uTime: { value: 1.0 },
+  uMouse: { value: new THREE.Vector2(mouse.x, mouse.y) },
+  uResolution: {
     value: new THREE.Vector2(sizes.width, sizes.height),
   },
 };
@@ -74,10 +74,10 @@ const initThreeJsScene = (canvas) => {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    material.uniforms.u_resolution.value.x = renderer.domElement.width;
-    material.uniforms.u_resolution.value.y = renderer.domElement.height;
-    material.uniforms.u_mouse.value.x = mouse.x;
-    material.uniforms.u_mouse.value.y = mouse.y;
+    material.uniforms.uResolution.value.x = renderer.domElement.width;
+    material.uniforms.uResolution.value.y = renderer.domElement.height;
+    material.uniforms.uMouse.value.x = mouse.x;
+    material.uniforms.uMouse.value.y = mouse.y;
   };
 
   onmousemove = (e) => {
@@ -88,7 +88,7 @@ const initThreeJsScene = (canvas) => {
   const animate = () => {
     controls.update();
     requestAnimationFrame(animate);
-    material.uniforms.u_time.value += new THREE.Clock().getDelta();
+    material.uniforms.uTime.value += new THREE.Clock().getDelta();
     renderer.render(scene, camera);
   };
 
