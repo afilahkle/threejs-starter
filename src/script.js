@@ -74,8 +74,8 @@ const initThreeJsScene = (canvas) => {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    material.uniforms.uResolution.value.x = renderer.domElement.width;
-    material.uniforms.uResolution.value.y = renderer.domElement.height;
+    material.uniforms.uResolution.value.x = sizes.width;
+    material.uniforms.uResolution.value.y = sizes.height;
     material.uniforms.uMouse.value.x = mouse.x;
     material.uniforms.uMouse.value.y = mouse.y;
   };
